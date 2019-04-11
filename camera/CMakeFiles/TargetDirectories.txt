@@ -1,0 +1,3 @@
+/Users/MeatBall/Desktop/477/Drone/camera/CMakeFiles/rebuild_cache.dir
+/Users/MeatBall/Desktop/477/Drone/camera/CMakeFiles/edit_cache.dir
+/Users/MeatBall/Desktop/477/Drone/camera/CMakeFiles/camera.dir
