@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 project(camera)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
-find_package(OpenCV 4 REQUIRED)
+find_package(OpenCV REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
