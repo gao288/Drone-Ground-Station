@@ -1,12 +1,18 @@
 #include "VideoThread.h"
 #include <QDebug>
 #include <iostream>
+#include <string>
+
+#define HMID 310
+#define VMID 240
+#define MAX_MARGIN 50
+#define DEAD_BAND 25
+
 const cv::String    WINDOW_NAME("Camera video");
 const cv::String    CASCADE_FILE("../../camera/haarcascade_frontalface_default.xml"); 
 
-VideoThread::VideoThread(QObject *parent) : QThread(parent){
+VideoThread::VideoThread(QObject *parent) : QThread(parent), gc("/dev/ttyUSB0"){}
 
-}
 void VideoThread::run(){
     cv::VideoCapture camera(0);
 	//cv::VideoCapture camera("D:\\video.mp4");
@@ -37,10 +43,40 @@ void VideoThread::run(){
 			cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
             cv::Point facePos = detector.facePosition();
 			cv::circle(frame, facePos, 30, cv::Scalar(0, 255, 0));
-            
-            //display face coordinates
-            //std::cout << "Frame Width:  " << frame.cols << "    " << "Frame Height:  " << frame.rows << std::endl;
-            std::cout << frame.cols/2 - facePos.x << "," << frame.rows/2 - facePos.y << std::endl;
+
+            if(gc.isActive()) {
+                if      (detector.facePosition().x > HMID + MAX_MARGIN) gc.writeToUART("x-100\n");
+                else if (detector.facePosition().x < HMID - MAX_MARGIN) gc.writeToUART("x 100\n");
+                else if (detector.facePosition().x < HMID + DEAD_BAND && 
+                         detector.facePosition().x > HMID - DEAD_BAND) gc.writeToUART("x 0\n");
+                else    {
+                    int val = HMID-detector.facePosition().x;
+                    std::string cmd = "x";
+                    if(val < 0) {
+                        cmd += "-";
+                        val *= -1;
+                    }
+                    else cmd += " ";
+
+                    gc.writeToUART(cmd + std::to_string(val) + "\n");
+                }
+
+                if      (detector.facePosition().y > VMID + MAX_MARGIN) gc.writeToUART("y 100\n");
+                else if (detector.facePosition().y < VMID - MAX_MARGIN) gc.writeToUART("y-100\n");
+                else if (detector.facePosition().y < VMID + DEAD_BAND && 
+                         detector.facePosition().y > VMID - DEAD_BAND) gc.writeToUART("y 0\n");
+                else    {
+                    int val = detector.facePosition().y - VMID;
+                    std::string cmd = "y";
+                    if(val < 0) {
+                        cmd += "-";
+                        val *= -1;
+                    }
+                    else cmd += " ";
+
+                    gc.writeToUART(cmd + std::to_string(val) + "\n");
+                }
+            }
 		}
 
 

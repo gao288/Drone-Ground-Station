@@ -17,15 +17,14 @@ set(project_headers
 		camera.h
 		VideoFaceDetector.h
 		VideoThread.h
-
+        GimbalUtil.h
 )
 set(project_sources main.cpp
 					camera.cpp
 					VideoFaceDetector.cpp
 					VideoThread.cpp
+                    GimbalUtil.cpp
 )
-
-
 
 add_executable(${PROJECT_NAME} ${project_headers} ${project_sources})
 

@@ -9,12 +9,14 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "opencv2/videoio.hpp"
 #include "VideoFaceDetector.h"
+#include "GimbalUtil.h"
 
  
 class VideoThread : public QThread
 {
     Q_OBJECT
 
+    GimbalController gc;
 public:
     explicit VideoThread(QObject *parent = 0);
     void run();
