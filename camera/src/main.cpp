@@ -1,4 +1,4 @@
-#include "camera.h"
+#include "../inc/camera.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

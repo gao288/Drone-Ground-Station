@@ -1,4 +1,4 @@
-#include "VideoThread.h"
+#include "../inc/VideoThread.h"
 #include <QDebug>
 #include <iostream>
 #include <string>

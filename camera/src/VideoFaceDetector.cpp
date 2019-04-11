@@ -1,4 +1,4 @@
-#include "VideoFaceDetector.h"
+#include "../inc/VideoFaceDetector.h"
 #include <iostream>
 #include <opencv2/imgproc.hpp>
 

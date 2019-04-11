@@ -1,4 +1,4 @@
-#include "GimbalUtil.h"
+#include "../inc/GimbalUtil.h"
 
 // change port name to your port
 GimbalController::GimbalController(std::string portname):
