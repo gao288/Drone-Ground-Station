@@ -14,7 +14,7 @@ const cv::String    CASCADE_FILE("../../camera/haarcascade_frontalface_default.x
 VideoThread::VideoThread(QObject *parent) : QThread(parent), gc("/dev/ttyUSB0"){}
 
 void VideoThread::run(){
-    cv::VideoCapture camera(0);
+    cv::VideoCapture camera(1);
 	//cv::VideoCapture camera("D:\\video.mp4");
     
 	if (!camera.isOpened()) {
