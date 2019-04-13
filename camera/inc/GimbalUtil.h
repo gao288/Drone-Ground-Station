@@ -14,15 +14,17 @@
 class GimbalController {
     int     fd;
     bool    active;
+    int     pwm[6];
 
     int set_interface_attribs(int, int);
     template<typename Out>
         void split(const std::string &s, char delim, Out result);
     std::vector<std::string> split(const std::string &s, char delim);
+    void writeToUART(std::string s);
 public:
-    GimbalController(std::string);
+    GimbalController(std::string portname);
     ~GimbalController();
 
-    void writeToUART(std::string s);
+    void sendMessage(int face_x, int face_y);
     bool isActive(){ return active; }
 };

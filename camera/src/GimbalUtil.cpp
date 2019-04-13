@@ -1,5 +1,9 @@
 #include "../inc/GimbalUtil.h"
 
+#define HMID 310
+#define VMID 240
+#define MAX_MARGIN 50
+#define DEAD_BAND 25
 // change port name to your port
 GimbalController::GimbalController(std::string portname):
     fd(open(portname.c_str(), O_RDWR | O_NOCTTY | O_SYNC)),active(true)
@@ -10,12 +14,13 @@ GimbalController::GimbalController(std::string portname):
         return;
     }
 
+
     /*baudrate 115200, 8 bits, no parity, 1 stop bit */
     set_interface_attribs(fd, B115200);
-    writeToUART(std::string("x0") + "\n");
-    writeToUART(std::string("y0") + "\n");
-    writeToUART(std::string("z0") + "\n");
 
+    for(int i = 0;i < 6;i++) pwm[i] = 100;
+    pwm[1] = 150;
+    sendMessage(0,0);
     sleep(1);
 }
 
@@ -92,3 +97,38 @@ void GimbalController::writeToUART(std::string s) {
     } while (!n_written);
 }
 
+
+void GimbalController::sendMessage(int face_x, int face_y) {
+
+    std::string cmd = "";
+
+    if(active) {
+    if      (face_x > HMID + MAX_MARGIN) cmd += "000";
+    else if (face_x < HMID - MAX_MARGIN) cmd += "200";
+    else if (face_x < HMID + DEAD_BAND && 
+            face_x > HMID - DEAD_BAND) cmd += "100";
+    else    {
+        int val = HMID - face_x + 100;
+        cmd += std::to_string(val);
+    }
+    cmd += "$";
+
+    if      (face_y > VMID + MAX_MARGIN) cmd += "200";
+    else if (face_y < VMID - MAX_MARGIN) cmd += "000";
+    else if (face_y < VMID + DEAD_BAND && 
+            face_y > VMID - DEAD_BAND) cmd += "100";
+    else    {
+        int val = face_y - VMID + 100;
+        cmd += std::to_string(val);
+    }
+    cmd += "$";
+    }
+    else {
+        cmd += "100$100$";
+    }
+
+    for(int i = 0;i < 6;i++) {
+        cmd += std::to_string(pwm[i]) + "$";
+    }
+    writeToUART(cmd + "\n");
+}
