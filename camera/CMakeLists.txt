@@ -6,7 +6,7 @@ find_package(OpenCV REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 #set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 

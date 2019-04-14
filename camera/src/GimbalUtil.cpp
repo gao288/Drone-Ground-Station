@@ -1,4 +1,6 @@
 #include "../inc/GimbalUtil.h"
+#include <assert.h>
+#include <ctime>
 
 #define HMID 310
 #define VMID 240
@@ -18,13 +20,16 @@ GimbalController::GimbalController(std::string portname):
     /*baudrate 115200, 8 bits, no parity, 1 stop bit */
     set_interface_attribs(fd, B115200);
 
+    face_x = 100, face_y = 100;
     for(int i = 0;i < 6;i++) pwm[i] = 100;
     pwm[1] = 150;
-    sendMessage(0,0);
+    sender = new std::thread(GimbalController::send, this);
     sleep(1);
 }
 
-GimbalController::~GimbalController() {}
+GimbalController::~GimbalController() {
+    delete sender;
+}
 
 
 template<typename Out>
@@ -89,46 +94,68 @@ void GimbalController::writeToUART(std::string s) {
     do {
         n_written = write(fd, &s[spot], 1);
         spot += n_written;
-    } while (s[spot-1] != '\n' && n_written > 0);
+    } while (spot < s.length() && n_written > 0);
 
-    char ter = '\r';
+    char ter = '\0';
     do {
         n_written = write(fd, &ter, 1);
     } while (!n_written);
 }
 
 
-void GimbalController::sendMessage(int face_x, int face_y) {
+void GimbalController::sendMessage() {
 
     std::string cmd = "";
 
     if(active) {
-    if      (face_x > HMID + MAX_MARGIN) cmd += "000";
-    else if (face_x < HMID - MAX_MARGIN) cmd += "200";
-    else if (face_x < HMID + DEAD_BAND && 
-            face_x > HMID - DEAD_BAND) cmd += "100";
-    else    {
-        int val = HMID - face_x + 100;
-        cmd += std::to_string(val);
-    }
-    cmd += "$";
+        if      (face_x > HMID + MAX_MARGIN) cmd += "000";
+        else if (face_x < HMID - MAX_MARGIN) cmd += "200";
+        else if (face_x < HMID + DEAD_BAND && 
+                face_x > HMID - DEAD_BAND) cmd += "100";
+        else    {
+            int val = HMID - face_x + 100;
+            std::string sval = std::to_string(val);
+            if(sval.length() < 3) sval = std::string(3-sval.length(),'0') + sval;
+            assert(sval.length() == 3);
+            cmd += sval;
+        }
+        cmd += "$";
 
-    if      (face_y > VMID + MAX_MARGIN) cmd += "200";
-    else if (face_y < VMID - MAX_MARGIN) cmd += "000";
-    else if (face_y < VMID + DEAD_BAND && 
-            face_y > VMID - DEAD_BAND) cmd += "100";
-    else    {
-        int val = face_y - VMID + 100;
-        cmd += std::to_string(val);
-    }
-    cmd += "$";
+        if      (face_y > VMID + MAX_MARGIN) cmd += "200";
+        else if (face_y < VMID - MAX_MARGIN) cmd += "000";
+        else if (face_y < VMID + DEAD_BAND && 
+                face_y > VMID - DEAD_BAND) cmd += "100";
+        else    {
+            int val = face_y - VMID + 100;
+            std::string sval = std::to_string(val);
+            if(sval.length() < 3) sval = std::string(3-sval.length(),'0') + sval;
+            assert(sval.length() == 3);
+            cmd += sval;
+        }
     }
     else {
-        cmd += "100$100$";
+        cmd += "100$100";
     }
 
     for(int i = 0;i < 6;i++) {
-        cmd += std::to_string(pwm[i]) + "$";
+        std::string sval = std::to_string(pwm[i]);
+        cmd +=  "$" + std::string(3-sval.length(),'0') + sval;
     }
-    writeToUART(cmd + "\n");
+
+    std::cout << "sending: " << cmd << std::endl;
+    writeToUART(cmd);
+}
+
+void GimbalController::send(GimbalController* gc) {
+    static int i = 0;
+    while(true) {
+        gc->sendMessage();
+        std::cout << i++ << std::endl;
+        usleep(10000);
+    }
+}
+
+void GimbalController::updateFace(int face_x, int face_y) {
+    this->face_x = face_x;
+    this->face_y = face_y;
 }

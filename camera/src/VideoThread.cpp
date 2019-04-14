@@ -40,8 +40,11 @@ void VideoThread::run(){
             cv::Point facePos = detector.facePosition();
 			cv::circle(frame, facePos, 30, cv::Scalar(0, 255, 0));
 
-            gc.sendMessage(facePos.x, facePos.y);
+            gc.updateFace(facePos.x, facePos.y);
 		}
+        else {
+            gc.updateFace(0, 0);
+        }
 
 
 		emit frameCaptured(&frame);
