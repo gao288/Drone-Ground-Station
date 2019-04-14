@@ -86,17 +86,17 @@ int GimbalController::set_interface_attribs(int fd, int speed)
 }
 
 
-void GimbalController::writeToUART(std::string s) {
+void GimbalController::writeToUART(uint8_t* data, uint8_t size) {
 
     if(!active) return;
     int n_written = 0, spot = 0;
 
     do {
-        n_written = write(fd, &s[spot], 1);
+        n_written = write(fd, &data[spot], 1);
         spot += n_written;
-    } while (spot < s.length() && n_written > 0);
+    } while (spot < size);
 
-    char ter = '\0';
+    uint8_t ter = 255;
     do {
         n_written = write(fd, &ter, 1);
     } while (!n_written);
@@ -105,45 +105,37 @@ void GimbalController::writeToUART(std::string s) {
 
 void GimbalController::sendMessage() {
 
-    std::string cmd = "";
-
+    uint8_t ss=1, xval=0, yval=0;
+    uint8_t dataOut[9];
     if(active) {
-        if      (face_x > HMID + MAX_MARGIN) cmd += "000";
-        else if (face_x < HMID - MAX_MARGIN) cmd += "200";
+        
+        if      (face_x > HMID + MAX_MARGIN) xval = 0;
+        else if (face_x < HMID - MAX_MARGIN) xval = 200;
         else if (face_x < HMID + DEAD_BAND && 
-                face_x > HMID - DEAD_BAND) cmd += "100";
-        else    {
-            int val = HMID - face_x + 100;
-            std::string sval = std::to_string(val);
-            if(sval.length() < 3) sval = std::string(3-sval.length(),'0') + sval;
-            assert(sval.length() == 3);
-            cmd += sval;
-        }
-        cmd += "$";
+                face_x > HMID - DEAD_BAND) xval = 100;
+        else    xval = HMID - face_x + 100;
 
-        if      (face_y > VMID + MAX_MARGIN) cmd += "200";
-        else if (face_y < VMID - MAX_MARGIN) cmd += "000";
+        if      (face_y > VMID + MAX_MARGIN) yval = 200;
+        else if (face_y < VMID - MAX_MARGIN) yval = 0;
         else if (face_y < VMID + DEAD_BAND && 
-                face_y > VMID - DEAD_BAND) cmd += "100";
-        else    {
-            int val = face_y - VMID + 100;
-            std::string sval = std::to_string(val);
-            if(sval.length() < 3) sval = std::string(3-sval.length(),'0') + sval;
-            assert(sval.length() == 3);
-            cmd += sval;
-        }
-    }
-    else {
-        cmd += "100$100";
+                face_y > VMID - DEAD_BAND) yval = 100;
+        else    yval = face_y - VMID + 100;
     }
 
+    dataOut[0] = ss; dataOut[1] = xval; dataOut[2] = yval;
     for(int i = 0;i < 6;i++) {
-        std::string sval = std::to_string(pwm[i]);
-        cmd +=  "$" + std::string(3-sval.length(),'0') + sval;
+        dataOut[3+i] = pwm[i];
     }
 
-    std::cout << "sending: " << cmd << std::endl;
-    writeToUART(cmd);
+    std::cout << "sending: signal select:" << (int)dataOut[0];
+    std::cout << " face_x:" << (int)dataOut[1];
+    std::cout << " face_y:" << (int)dataOut[2];
+    for(int i = 0;i < 6;i++) {
+        std::cout << " ch[" << i << "]:" << (int)dataOut[3+i];
+    }
+    std::cout << std::endl;
+
+    writeToUART(dataOut, 9);
 }
 
 void GimbalController::send(GimbalController* gc) {

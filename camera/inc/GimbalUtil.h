@@ -16,7 +16,7 @@ class GimbalController {
     int     fd;
     bool    active;
     int     face_x, face_y;
-    int     pwm[6];
+    uint8_t pwm[6];
     std::thread* sender;
 
     int set_interface_attribs(int, int);
@@ -24,7 +24,7 @@ class GimbalController {
         void split(const std::string &s, char delim, Out result);
     std::vector<std::string> split(const std::string &s, char delim);
     void sendMessage();
-    void writeToUART(std::string s);
+    void writeToUART(uint8_t* data, uint8_t size);
     static void send(GimbalController* gc);
 public:
     GimbalController(std::string portname);
