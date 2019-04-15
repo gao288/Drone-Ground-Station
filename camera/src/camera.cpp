@@ -51,3 +51,15 @@ void camera::on_Stop_clicked(){
     vt->terminate();
 }
 
+
+
+void camera::on_slider1_valueChanged(int value)
+{
+    std::cout<<value<<std::endl;
+}
+
+void camera::on_ArmButton_clicked()
+{
+    camera::ui->slider1->setValue(10);
+}
+
