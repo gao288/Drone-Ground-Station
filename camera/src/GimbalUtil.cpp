@@ -20,9 +20,9 @@ GimbalController::GimbalController(std::string portname):
     /*baudrate 115200, 8 bits, no parity, 1 stop bit */
     set_interface_attribs(fd, B115200);
 
-    face_x = 100, face_y = 100;
-    for(int i = 0;i < 6;i++) pwm[i] = 100;
-    pwm[1] = 150;
+    face_x = 320, face_y = 240;
+    for(int i = 0;i < 6;i++) pwm[i] = 150;
+    pwm[3] = 100;
     sender = new std::thread(GimbalController::send, this);
     sleep(1);
 }
@@ -105,6 +105,7 @@ void GimbalController::writeToUART(uint8_t* data, uint8_t size) {
 
 void GimbalController::sendMessage() {
 
+    static int i = 0;
     uint8_t ss=1, xval=0, yval=0;
     uint8_t dataOut[9];
     if(active) {
@@ -127,7 +128,8 @@ void GimbalController::sendMessage() {
         dataOut[3+i] = pwm[i];
     }
 
-    std::cout << "sending: signal select:" << (int)dataOut[0];
+    std::cout << i++;
+    std::cout << " sending: signal select:" << (int)dataOut[0];
     std::cout << " face_x:" << (int)dataOut[1];
     std::cout << " face_y:" << (int)dataOut[2];
     for(int i = 0;i < 6;i++) {
@@ -139,10 +141,8 @@ void GimbalController::sendMessage() {
 }
 
 void GimbalController::send(GimbalController* gc) {
-    static int i = 0;
     while(true) {
         gc->sendMessage();
-        std::cout << i++ << std::endl;
         usleep(10000);
     }
 }
@@ -150,4 +150,13 @@ void GimbalController::send(GimbalController* gc) {
 void GimbalController::updateFace(int face_x, int face_y) {
     this->face_x = face_x;
     this->face_y = face_y;
+}
+
+void GimbalController::Arm() {
+    
+    pwm[3] = 100;
+    pwm[4] = 100;
+    sleep(1);
+    pwm[4] = 150;
+
 }

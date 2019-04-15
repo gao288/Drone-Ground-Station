@@ -34,6 +34,7 @@ public:
 
     bool isActive(){ return active; }
     void updateFace(int face_x, int face_y);
+    void Arm();
 };
 
 #endif

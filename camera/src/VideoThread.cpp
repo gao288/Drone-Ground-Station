@@ -42,7 +42,7 @@ void VideoThread::run(){
             gc->updateFace(facePos.x, facePos.y);
 		}
         else {
-            gc->updateFace(0, 0);
+            gc->updateFace(320, 240);
         }
 
 		emit frameCaptured(&frame);
