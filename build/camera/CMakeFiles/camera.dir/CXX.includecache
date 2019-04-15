@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/camera_autogen/DIG64O274K/moc_VideoThread.cpp
+../../../../camera/inc/VideoThread.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/VideoThread.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/camera_autogen/DIG64O274K/moc_camera.cpp
+../../../../camera/inc/camera.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/camera.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
+-
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/camera_autogen/mocs_compilation.cpp
+DIG64O274K/moc_VideoThread.cpp
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/camera_autogen/DIG64O274K/moc_VideoThread.cpp
+DIG64O274K/moc_camera.cpp
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/camera_autogen/DIG64O274K/moc_camera.cpp
+
 /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/GimbalUtil.h
 errno.h
 -
@@ -58,6 +80,32 @@ VideoFaceDetector.h
 GimbalUtil.h
 /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/GimbalUtil.h
 
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/camera.h
+QCameraInfo
+-
+QMainWindow
+-
+QPushButton
+-
+VideoThread.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/VideoThread.h
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/GimbalUtil.cpp
+../inc/GimbalUtil.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/GimbalUtil.h
+assert.h
+-
+ctime
+-
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/VideoFaceDetector.cpp
+../inc/VideoFaceDetector.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/VideoFaceDetector.h
+iostream
+-
+opencv2/imgproc.hpp
+-
+
 /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/VideoThread.cpp
 ../inc/VideoThread.h
 /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/VideoThread.h
@@ -66,6 +114,24 @@ QDebug
 iostream
 -
 string
+-
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/camera.cpp
+../inc/camera.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/camera.h
+ui_camera.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/ui_camera.h
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+iostream
+-
+
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/main.cpp
+../inc/camera.h
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/camera.h
+QApplication
 -
 
 /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QDebug
@@ -116,6 +182,60 @@ future
 functional
 -
 limits.h
+-
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/QCameraInfo
+qcamerainfo.h
+/Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/qcamerainfo.h
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/qcamerainfo.h
+QtMultimedia/qcamera.h
+-
+QtCore/qsharedpointer.h
+-
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QApplication
+qapplication.h
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow
+qmainwindow.h
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton
+qpushbutton.h
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtCore/qcoreapplication.h
+-
+QtGui/qwindowdefs.h
+-
+QtCore/qpoint.h
+-
+QtCore/qsize.h
+-
+QtGui/qcursor.h
+-
+QtWidgets/qdesktopwidget.h
+-
+QtGui/qguiapplication.h
+-
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qwidget.h
+-
+QtWidgets/qtabwidget.h
+-
+
+/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
+QtWidgets/qtwidgetsglobal.h
+-
+QtWidgets/qabstractbutton.h
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
@@ -1343,4 +1463,30 @@ opencv2/videostab/global_motion.hpp
 /usr/local/include/opencv4/opencv2/videostab/opencv2/videostab/global_motion.hpp
 opencv2/videostab/log.hpp
 /usr/local/include/opencv4/opencv2/videostab/opencv2/videostab/log.hpp
+
+camera/ui_camera.h
+QtCore/QVariant
+-
+QtWidgets/QApplication
+-
+QtWidgets/QCheckBox
+-
+QtWidgets/QComboBox
+-
+QtWidgets/QLabel
+-
+QtWidgets/QMainWindow
+-
+QtWidgets/QMenuBar
+-
+QtWidgets/QPushButton
+-
+QtWidgets/QSlider
+-
+QtWidgets/QStatusBar
+-
+QtWidgets/QToolBar
+-
+QtWidgets/QWidget
+-
 

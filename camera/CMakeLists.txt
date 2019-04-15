@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(camera)
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui Multimedia)
 find_package(OpenCV REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 #set(CMAKE_AUTOUIC ON)
@@ -35,6 +35,6 @@ target_link_libraries(${PROJECT_NAME}
 	Qt5::Core
 	Qt5::Gui
 	Qt5::Widgets
-	
+	Qt5::Multimedia
 	${OpenCV_LIBS}
 )

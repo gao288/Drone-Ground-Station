@@ -17,6 +17,8 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "QT_CORE_LIB"
   "QT_GUI_LIB"
+  "QT_MULTIMEDIA_LIB"
+  "QT_NETWORK_LIB"
   "QT_NO_DEBUG"
   "QT_WIDGETS_LIB"
   )
@@ -35,6 +37,10 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework/Headers"
   "/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework"
   "/Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers"
+  "/Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework"
+  "/Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers"
+  "/Users/home/Qt/5.12.2/clang_64/lib/QtNetwork.framework"
+  "/Users/home/Qt/5.12.2/clang_64/lib/QtNetwork.framework/Headers"
   )
 
 # Targets to which this target links.

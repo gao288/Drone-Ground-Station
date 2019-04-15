@@ -11,8 +11,12 @@ camera/CMakeFiles/camera.dir/camera_autogen/mocs_compilation.cpp.o
  /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/inc/camera.h
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QThread
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qthread.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/QCameraInfo
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/qcamerainfo.h
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -400,8 +404,12 @@ camera/CMakeFiles/camera.dir/src/camera.cpp.o
  /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/camera.cpp
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QThread
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qthread.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/QCameraInfo
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/qcamerainfo.h
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp
@@ -533,10 +541,14 @@ camera/CMakeFiles/camera.dir/src/main.cpp.o
  /Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/camera/src/main.cpp
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QThread
  /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qthread.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/QCameraInfo
+ /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/Headers/qcamerainfo.h
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QApplication
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QMainWindow
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QPushButton
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
  /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h
+ /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qpushbutton.h
  /usr/local/include/opencv4/opencv2/calib3d.hpp
  /usr/local/include/opencv4/opencv2/core.hpp
  /usr/local/include/opencv4/opencv2/core/affine.hpp

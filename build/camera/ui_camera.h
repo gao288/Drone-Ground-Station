@@ -12,9 +12,11 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -28,10 +30,13 @@ public:
     QWidget *centralWidget;
     QLabel *video;
     QCheckBox *AutoMode;
-    QSlider *slider;
-    QSlider *horizontalSlider_2;
-    QSlider *horizontalSlider_3;
-    QSlider *horizontalSlider_4;
+    QSlider *slider1;
+    QSlider *slider2;
+    QSlider *slider3;
+    QSlider *slider4;
+    QComboBox *AvailableCameras;
+    QPushButton *Start;
+    QPushButton *Stop;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -50,22 +55,31 @@ public:
         AutoMode = new QCheckBox(centralWidget);
         AutoMode->setObjectName(QString::fromUtf8("AutoMode"));
         AutoMode->setGeometry(QRect(761, 305, 85, 20));
-        slider = new QSlider(centralWidget);
-        slider->setObjectName(QString::fromUtf8("slider"));
-        slider->setGeometry(QRect(760, 340, 161, 31));
-        slider->setOrientation(Qt::Horizontal);
-        horizontalSlider_2 = new QSlider(centralWidget);
-        horizontalSlider_2->setObjectName(QString::fromUtf8("horizontalSlider_2"));
-        horizontalSlider_2->setGeometry(QRect(760, 370, 160, 22));
-        horizontalSlider_2->setOrientation(Qt::Horizontal);
-        horizontalSlider_3 = new QSlider(centralWidget);
-        horizontalSlider_3->setObjectName(QString::fromUtf8("horizontalSlider_3"));
-        horizontalSlider_3->setGeometry(QRect(760, 400, 160, 22));
-        horizontalSlider_3->setOrientation(Qt::Horizontal);
-        horizontalSlider_4 = new QSlider(centralWidget);
-        horizontalSlider_4->setObjectName(QString::fromUtf8("horizontalSlider_4"));
-        horizontalSlider_4->setGeometry(QRect(760, 430, 160, 22));
-        horizontalSlider_4->setOrientation(Qt::Horizontal);
+        slider1 = new QSlider(centralWidget);
+        slider1->setObjectName(QString::fromUtf8("slider1"));
+        slider1->setGeometry(QRect(760, 340, 161, 31));
+        slider1->setOrientation(Qt::Horizontal);
+        slider2 = new QSlider(centralWidget);
+        slider2->setObjectName(QString::fromUtf8("slider2"));
+        slider2->setGeometry(QRect(760, 370, 160, 31));
+        slider2->setOrientation(Qt::Horizontal);
+        slider3 = new QSlider(centralWidget);
+        slider3->setObjectName(QString::fromUtf8("slider3"));
+        slider3->setGeometry(QRect(760, 400, 160, 31));
+        slider3->setOrientation(Qt::Horizontal);
+        slider4 = new QSlider(centralWidget);
+        slider4->setObjectName(QString::fromUtf8("slider4"));
+        slider4->setGeometry(QRect(760, 430, 160, 31));
+        slider4->setOrientation(Qt::Horizontal);
+        AvailableCameras = new QComboBox(centralWidget);
+        AvailableCameras->setObjectName(QString::fromUtf8("AvailableCameras"));
+        AvailableCameras->setGeometry(QRect(760, 224, 161, 32));
+        Start = new QPushButton(centralWidget);
+        Start->setObjectName(QString::fromUtf8("Start"));
+        Start->setGeometry(QRect(759, 261, 81, 31));
+        Stop = new QPushButton(centralWidget);
+        Stop->setObjectName(QString::fromUtf8("Stop"));
+        Stop->setGeometry(QRect(840, 261, 81, 31));
         camera->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(camera);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -91,6 +105,8 @@ public:
         camera->setWindowTitle(QApplication::translate("camera", "camera", nullptr));
         video->setText(QString());
         AutoMode->setText(QApplication::translate("camera", "AutoMode", nullptr));
+        Start->setText(QApplication::translate("camera", "Start", nullptr));
+        Stop->setText(QApplication::translate("camera", "Stop", nullptr));
     } // retranslateUi
 
 };

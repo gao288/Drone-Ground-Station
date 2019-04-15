@@ -159,6 +159,7 @@ camera/camera: camera/CMakeFiles/camera.dir/src/main.cpp.o
 camera/camera: camera/CMakeFiles/camera.dir/camera_autogen/mocs_compilation.cpp.o
 camera/camera: camera/CMakeFiles/camera.dir/build.make
 camera/camera: /Users/home/Qt/5.12.2/clang_64/lib/QtWidgets.framework/QtWidgets
+camera/camera: /Users/home/Qt/5.12.2/clang_64/lib/QtMultimedia.framework/QtMultimedia
 camera/camera: /usr/local/lib/libopencv_gapi.4.0.1.dylib
 camera/camera: /usr/local/lib/libopencv_stitching.4.0.1.dylib
 camera/camera: /usr/local/lib/libopencv_aruco.4.0.1.dylib
@@ -185,6 +186,7 @@ camera/camera: /usr/local/lib/libopencv_xfeatures2d.4.0.1.dylib
 camera/camera: /usr/local/lib/libopencv_xobjdetect.4.0.1.dylib
 camera/camera: /usr/local/lib/libopencv_xphoto.4.0.1.dylib
 camera/camera: /Users/home/Qt/5.12.2/clang_64/lib/QtGui.framework/QtGui
+camera/camera: /Users/home/Qt/5.12.2/clang_64/lib/QtNetwork.framework/QtNetwork
 camera/camera: /Users/home/Qt/5.12.2/clang_64/lib/QtCore.framework/QtCore
 camera/camera: /usr/local/lib/libopencv_shape.4.0.1.dylib
 camera/camera: /usr/local/lib/libopencv_phase_unwrapping.4.0.1.dylib
