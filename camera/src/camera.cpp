@@ -22,12 +22,7 @@ camera::camera(QWidget *parent) :
 void camera::OnFrameCaptured(const cv::Mat *frame){
     QImage imgIn= QImage((uchar*) frame->data, frame->cols, frame->rows, frame->step, QImage::Format_RGB888);
     imgIn = imgIn.scaled(600,480,Qt::KeepAspectRatio);
-    ui->video->setPixmap(QPixmap::fromImage(imgIn));
-    // std::cout << "HelloWorld"<<std::endl;
-
-    // QImage myImage;
-    // myImage.load("/Users/MeatBall/Desktop/477/DroneGround/camera/image/1.jpg");
-    // ui->video->setPixmap(QPixmap::fromImage(myImage));
+    ui->video->setPixmap(QPixmap::fromImage(imgIn.rgbSwapped()));
 
 }
 

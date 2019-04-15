@@ -10,7 +10,7 @@ const cv::String    CASCADE_FILE("../../camera/haarcascade_frontalface_default.x
 VideoThread::VideoThread(QObject *parent) : QThread(parent), gc("/dev/ttyUSB0"){}
 
 void VideoThread::run(){
-    cv::VideoCapture camera(1);
+    cv::VideoCapture camera(0);
 	//cv::VideoCapture camera("D:\\video.mp4");
     
 	if (!camera.isOpened()) {
@@ -39,7 +39,7 @@ void VideoThread::run(){
 			cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
             cv::Point facePos = detector.facePosition();
 			cv::circle(frame, facePos, 30, cv::Scalar(0, 255, 0));
-
+			std::cout << frame.cols/2 - facePos.x << "," << frame.rows/2 - facePos.y << std::endl;
             gc.updateFace(facePos.x, facePos.y);
 		}
         else {

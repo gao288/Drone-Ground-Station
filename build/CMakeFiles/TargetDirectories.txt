@@ -1,0 +1,6 @@
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/CMakeFiles/rebuild_cache.dir
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/CMakeFiles/edit_cache.dir
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/CMakeFiles/rebuild_cache.dir
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/CMakeFiles/edit_cache.dir
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/CMakeFiles/camera.dir
+/Users/home/Desktop/PURDUE COURSE/ECE477/Drone-Ground-Station/build/camera/CMakeFiles/camera_autogen.dir
