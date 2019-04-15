@@ -26,6 +26,9 @@ private slots:
     void on_Stop_clicked();
 
     void on_slider1_valueChanged(int value);
+    void on_slider2_valueChanged(int value);
+    void on_slider3_valueChanged(int value);
+    void on_slider4_valueChanged(int value);
     void on_ArmButton_clicked();
 private:
     Ui::camera *ui;

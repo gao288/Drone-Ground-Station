@@ -140,6 +140,7 @@ void GimbalController::sendMessage() {
     writeToUART(dataOut, 9);
 }
 
+
 void GimbalController::send(GimbalController* gc) {
     while(true) {
         gc->sendMessage();
@@ -147,10 +148,19 @@ void GimbalController::send(GimbalController* gc) {
     }
 }
 
+
 void GimbalController::updateFace(int face_x, int face_y) {
     this->face_x = face_x;
     this->face_y = face_y;
 }
+
+
+void GimbalController::updatePWM(int channel, int value) {
+    if(channel < 0 || channel > 5) return;
+    if(value < 0 || value > 100) return;
+    pwm[channel] = value+100;
+}
+
 
 void GimbalController::Arm() {
     
