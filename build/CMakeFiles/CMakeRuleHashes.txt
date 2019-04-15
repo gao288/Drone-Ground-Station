@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-873c033d78835fbb4f0304ed00b01322 camera/CMakeFiles/camera_autogen
-e2c4b93942fbd27f9ef1b7874b3b7d6a camera/ui_camera.h
