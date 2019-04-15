@@ -5,6 +5,8 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include "VideoThread.h"
+#include "GimbalUtil.h"
+
 namespace Ui {
 class camera;
 }
@@ -24,8 +26,7 @@ private slots:
     void on_Stop_clicked();
 private:
     Ui::camera *ui;
-
-
+    GimbalController* gc;
 };
 
 #endif // CAMERA_H

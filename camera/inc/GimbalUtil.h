@@ -1,3 +1,5 @@
+#ifndef _GIMBAL_UTIL_H_
+#define _GIMBAL_UTIL_H_
 #include <errno.h>
 #include <fcntl.h> 
 #include <stdio.h>
@@ -33,3 +35,5 @@ public:
     bool isActive(){ return active; }
     void updateFace(int face_x, int face_y);
 };
+
+#endif

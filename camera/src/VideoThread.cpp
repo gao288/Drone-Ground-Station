@@ -7,7 +7,7 @@
 const cv::String    WINDOW_NAME("Camera video");
 const cv::String    CASCADE_FILE("../../camera/haarcascade_frontalface_default.xml"); 
 
-VideoThread::VideoThread( int id,QObject *parent) : QThread(parent), gc("/dev/ttyUSB0"),Camera_id(id){}
+VideoThread::VideoThread( int id,QObject *parent, GimbalController* gc) : QThread(parent), gc(gc), Camera_id(id){}
 
 void VideoThread::run(){
     cv::VideoCapture camera(VideoThread::Camera_id);
@@ -34,20 +34,16 @@ void VideoThread::run(){
 		time_per_frame = (end - start) / cv::getTickFrequency();
 		fps = (15 * fps + (1 / time_per_frame)) / 16;
 
-		//printf("Time per frame: %3.3f\tFPS: %3.3f\n", time_per_frame, fps);
-
 		if (detector.isFaceFound())
 		{
 			cv::rectangle(frame, detector.face(), cv::Scalar(255, 0, 0));
             cv::Point facePos = detector.facePosition();
 			cv::circle(frame, facePos, 30, cv::Scalar(0, 255, 0));
-			//std::cout << frame.cols/2 - facePos.x << "," << frame.rows/2 - facePos.y << std::endl;
-            gc.updateFace(facePos.x, facePos.y);
+            gc->updateFace(facePos.x, facePos.y);
 		}
         else {
-            gc.updateFace(0, 0);
+            gc->updateFace(0, 0);
         }
-
 
 		emit frameCaptured(&frame);
 		if (cv::waitKey(25) == 27) break;

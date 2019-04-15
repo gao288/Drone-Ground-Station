@@ -16,10 +16,10 @@ class VideoThread : public QThread
 {
     Q_OBJECT
 
-    GimbalController gc;
+    GimbalController* gc;
     int Camera_id;
 public:
-    explicit VideoThread(int id,QObject *parent = 0);
+    explicit VideoThread(int id,QObject *parent = 0, GimbalController* gc = nullptr);
     void run();
  
 signals:
