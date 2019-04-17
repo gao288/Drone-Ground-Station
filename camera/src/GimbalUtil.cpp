@@ -150,8 +150,14 @@ void GimbalController::send(GimbalController* gc) {
 
 
 void GimbalController::updateFace(int face_x, int face_y) {
-    this->face_x = face_x;
-    this->face_y = face_y;
+    if(active) {
+        this->face_x = face_x;
+        this->face_y = face_y;
+    }
+    else {
+        this->face_x = HMID;
+        this->face_y = VMID;
+    }
 }
 
 
@@ -165,8 +171,8 @@ void GimbalController::updatePWM(int channel, int value) {
 void GimbalController::Arm() {
     
     pwm[3] = 100;
-    pwm[4] = 100;
-    sleep(1);
+    pwm[4] = 200;
+    sleep(3);
     pwm[4] = 150;
 
 }

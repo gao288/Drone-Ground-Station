@@ -32,6 +32,8 @@ public:
     GimbalController(std::string portname);
     ~GimbalController();
 
+    void Activative() {active = true;}
+    void Deactivative() {active = false;}
     bool isActive(){ return active; }
     void updateFace(int face_x, int face_y);
     void updatePWM(int channel, int value);

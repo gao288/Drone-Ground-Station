@@ -117,5 +117,6 @@ void camera::on_ArmButton_clicked()
 
 void camera::on_facetrack_clicked()
 {
-
+    if(gc->isActive()) gc->Deactivative();
+    else gc->Activative();
 }

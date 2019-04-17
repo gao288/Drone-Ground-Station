@@ -10,9 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-
 set(src_dir src inc ui)
-message(STATUS ${src_dir})
 foreach(dir ${src_dir})
 	string(TOUPPER "${dir}" dir_u)
 	file(GLOB ${dir_u}_UI_FILES     ${dir}/*.ui)
