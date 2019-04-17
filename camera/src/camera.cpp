@@ -26,6 +26,10 @@ camera::camera(QWidget *parent) :
     
     // TODO: add a box  to select usb source
     gc = new GimbalController("/dev/ttyUSB0");
+    camera::ui->slider1->setValue(50);
+    camera::ui->slider2->setValue(50);
+    camera::ui->slider3->setValue(0);
+    camera::ui->slider4->setValue(50);
 }
 
 void camera::OnFrameCaptured(const cv::Mat *frame){
@@ -55,7 +59,22 @@ void camera::on_Stop_clicked(){
 
 void camera::on_slider1_valueChanged(int value)
 {
-    std::cout<<value<<std::endl;
+    gc->updatePWM(0,value);
+}
+
+void camera::on_slider2_valueChanged(int value)
+{
+    gc->updatePWM(1,value);
+}
+
+void camera::on_slider3_valueChanged(int value)
+{
+    gc->updatePWM(2,value);
+}
+
+void camera::on_slider4_valueChanged(int value)
+{
+    gc->updatePWM(3,value);
 }
 void camera::on_slider1_left_clicked(){
 
