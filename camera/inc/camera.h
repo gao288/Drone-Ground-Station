@@ -27,9 +27,21 @@ private slots:
 
     void on_slider1_valueChanged(int value);
     void on_ArmButton_clicked();
+
+    void on_slider1_left_clicked();
+    void on_slider2_left_clicked();
+    void on_slider3_left_clicked();
+    void on_slider4_left_clicked();
+    void on_slider1_right_clicked();
+    void on_slider2_right_clicked();
+    void on_slider3_right_clicked();
+    void on_slider4_right_clicked();
+
+    void on_facetrack_clicked();
 private:
     Ui::camera *ui;
     GimbalController* gc;
+
 };
 
 #endif // CAMERA_H

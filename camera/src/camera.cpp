@@ -57,9 +57,46 @@ void camera::on_slider1_valueChanged(int value)
 {
     std::cout<<value<<std::endl;
 }
+void camera::on_slider1_left_clicked(){
+
+    camera::ui->slider1->setValue(ui->slider1->value() - 1);
+}
+void camera::on_slider2_left_clicked(){
+    
+    camera::ui->slider2->setValue(ui->slider2->value() - 1);
+}
+void camera::on_slider3_left_clicked(){
+    
+    camera::ui->slider3->setValue(ui->slider3->value() - 1);
+}
+void camera::on_slider4_left_clicked(){
+    
+    camera::ui->slider4->setValue(ui->slider4->value() - 1);
+}
+void camera::on_slider1_right_clicked(){
+
+    camera::ui->slider1->setValue(ui->slider1->value() + 1);
+}
+void camera::on_slider2_right_clicked(){
+ 
+    camera::ui->slider2->setValue(ui->slider2->value() + 1);
+}
+void camera::on_slider3_right_clicked(){
+ 
+    camera::ui->slider3->setValue(ui->slider3->value() + 1);
+}
+void camera::on_slider4_right_clicked(){
+    
+    camera::ui->slider4->setValue(ui->slider4->value() + 1);
+}
 
 void camera::on_ArmButton_clicked()
 {
     camera::ui->slider1->setValue(10);
 }
 
+
+void camera::on_facetrack_clicked()
+{
+
+}
